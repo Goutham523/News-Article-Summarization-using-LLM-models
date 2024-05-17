@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Article Text Summarizer</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('Article.jpg'); /* Replace 'background-image.jpg' with your image file */
+            background-size: cover;
+            background-position: center;
+            color: #100808; /* Text color for better contrast with the background */
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ffcc00; /* Heading color */
+            text-align: center;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.8); /* Form background color with transparency */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        label, textarea, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50; /* Submit button color */
+            color: #ede5e5;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049; /* Hover color for submit button */
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #ffcc00; /* Heading color */
+        }
+
+        p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <h1>News Article Summarizer</h1>
+
+    <form method="POST" action="/summarize">
+        <label for="article">Paste your article:</label>
+        <textarea id="article" name="article" rows="10" cols="50" required></textarea>
+        <input type="submit" value="Summarize">
+    </form>
+
+    {% if article %}
+        <h2>Original Article:</h2>
+        <p>{{ article }}</p>
+
+        <h2>Summary :</h2>
+        <p>{{ gpt_summary }}</p>
+    {% endif %}
+</body>
+</html>
